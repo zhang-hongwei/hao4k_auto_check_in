@@ -3,9 +3,9 @@ name: hao4k
 on:
   push:
     branches: 
-      - feature/test_login
+      - main
   schedule:
-    - cron: '5 17 * * *'
+    - cron: '1 0 * * *'
 
 jobs:
   Hao4K-autoSignIn:
@@ -13,7 +13,7 @@ jobs:
     
     steps:
     - name: checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@feature/test_login
     
     - name: Set python
       uses: actions/setup-python@v2
