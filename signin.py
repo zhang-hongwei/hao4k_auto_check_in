@@ -29,7 +29,6 @@ def run(form_data):
     s.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'})
     headers = {"Content-Type": "text/html", 'Connection': 'close'}
     user_resp = s.get(user_url, headers=headers)
-    print(user_resp.text)
     login_text = re.findall('action="(.*?)"', user_resp.text)
     for loginhash in login_text:
         if 'loginhash' in loginhash:
