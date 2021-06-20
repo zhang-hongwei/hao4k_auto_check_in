@@ -59,21 +59,23 @@ def run(form_data):
 
 
 if __name__ == "__main__":
-  signin_log = run(form_data)
-  if signin_log is None:
-    send_content = "hao4k 每日签到成功！"
-    print('Sign in automatically!')
+  if not username or not password or not sckey:
+    print('未找到登录信息，请参考 readme 中指导，前往仓库 setting/secrets，添加对应 key')
+    raise Exception('Could not find any keys')
   else:
-    send_content = signin_log
-    print(signin_log)
-  params = {'title': 'Hao4k 每日签到结果通知：', 'desp': send_content}
+    signin_log = run(form_data)
 
-  print(send_url)
-  print('\n')
-  print(params)
+    if signin_log is None:
+      send_content = "hao4k 每日签到成功！"
+      print('Sign in automatically!')
+    else:
+      send_content = signin_log
+      print(signin_log)
+    
+    params = {'title': 'Hao4k 每日签到结果通知：', 'desp': send_content}
 
-  r = requests.post(send_url, params=params)
-  if r.status_code == 200:
-    print('已通知 server 酱')
-  else:
-    print('通知 Server 酱推送失败，详情：\n请求状态码：{}\n{}'.format(r.status_code, r.text))
+    r = requests.post(send_url, params=params)
+    if r.status_code == 200:
+      print('已通知 server 酱')
+    else:
+      print('通知 Server 酱推送失败，详情：\n请求状态码：{}\n{}'.format(r.status_code, r.text))
