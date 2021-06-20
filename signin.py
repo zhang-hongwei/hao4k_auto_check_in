@@ -5,6 +5,7 @@ import re
 # hao4k 账户信息
 username = os.environ["HAO4K_USERNAME"]
 password = os.environ["HAO4K_PASSWORD"]
+
 # 添加 server 酱通知
 sckey = os.environ["SERVERCHAN_SCKEY"]
 send_url = "https://sctapi.ftqq.com/%s.send" % (sckey)
@@ -26,7 +27,7 @@ inajax = '&inajax=1'
 
 def run(form_data):
     s = requests.Session()
-    s.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'})
+    s.headers.update({'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'})
     headers = {"Content-Type": "text/html", 'Connection': 'close'}
     user_resp = s.get(user_url, headers=headers)
     login_text = re.findall('action="(.*?)"', user_resp.text)
@@ -64,5 +65,8 @@ if __name__ == "__main__":
     send_content = signin_log
     print(signin_log)
   params = {'title': 'Hao4k 每日签到结果通知：', 'desp': send_content}
-  requests.post(send_url, params=params)
-  print('已通知 server 酱')
+  r = requests.post(send_url, params=params)
+  if r.status_code == 200:
+    print('已通知 server 酱')
+  else:
+    print('通知 Server 酱推送失败，详情 {}'.format(r.json()))

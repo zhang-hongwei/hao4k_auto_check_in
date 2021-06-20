@@ -1,10 +1,12 @@
 # Hao4K 每日签到 action ![hao4k](https://github.com/cy920820/hao4k-signin-actions/workflows/hao4k/badge.svg)
 
+该项目改编自 [cy920820/hao4k-signin-actions](https://github.com/cy920820/hao4k-signin-action)
+
 基于 Github Actions 的 Hao4K 自动签到来增加K币
 
 ## 功能
 
-- 每日凌晨 12 点定时签到
+- 每日凌晨 1 点 11 分定时签到（可自定义）
 - 支持监控告警，具体配置文档查看[Server 酱](https://sct.ftqq.com/)，消息通道支持以下渠道
   - 企业微信应用消息
   - Android，
@@ -22,7 +24,7 @@
   - 找到 [.github/workflows/hao4k.yml](https://github.com/cy920820/hao4k-signin-action/blob/main/.github/workflows/hao4k.yml) line 27, `env` 下的三个 secret
     - HAO4K_USERNAME
     - HAO4K_PASSWORD
-    - SERVERCHAN_SCKEY (监控告警 server 酱 sckey)
+    - SERVERCHAN_SCKEY (监控告警 server 酱 sctkey)
   - 配置到仓库的 `setting/secrets`
 - 修改定时任务时间，在 [.github/workflows/hao4k.yml](https://github.com/cy920820/hao4k-signin-action/blob/main/.github/workflows/hao4k.yml) line 8, 修改 cron 计时表达式，参考 [schedule](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events)（可选）
 
