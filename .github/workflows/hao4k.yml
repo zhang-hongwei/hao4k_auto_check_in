@@ -1,6 +1,9 @@
 name: hao4k
 
 on:
+  push:
+    branches: 
+      - main
   schedule:
     - cron: '11 1 * * *'
 
