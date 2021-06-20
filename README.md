@@ -1,4 +1,4 @@
-# Hao4K 每日签到 action ![hao4k](https://github.com/cy920820/hao4k-signin-actions/workflows/hao4k/badge.svg)
+# Hao4K 每日签到 action [![hao4k](https://github.com/zesming/hao4k_auto_chech_in/actions/workflows/hao4k.yml/badge.svg)](https://github.com/zesming/hao4k_auto_chech_in/actions/workflows/hao4k.yml)
 
 该项目改编自 [cy920820/hao4k-signin-actions](https://github.com/cy920820/hao4k-signin-action)
 
