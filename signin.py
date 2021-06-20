@@ -1,3 +1,4 @@
+# coding=utf-8
 import requests
 import os
 import re
@@ -44,16 +45,17 @@ def run(form_data):
     login_resp = s.post(login_url, data=form_data)
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html', headers=headers)
     if username in test_resp.text:
-      print('login!')
+      print('登陆成功')
     else:
-      return 'login failed!'
+      return '登录失败'
     signin_text = re.search('formhash=(.*?)"', test_resp.text)
     signin_resp = s.get(signin_url.format(formhash=signin_text.group(1)))
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html', headers=headers)
     if '您的签到排名' in test_resp.text:
       print('signin!')
     else:
-      return 'signin failed!'
+      print(test_resp.text)
+      return '签到失败或者已经签到，请登录 hao4k 查看签到状态'
 
 
 if __name__ == "__main__":
@@ -65,8 +67,13 @@ if __name__ == "__main__":
     send_content = signin_log
     print(signin_log)
   params = {'title': 'Hao4k 每日签到结果通知：', 'desp': send_content}
+
+  print(send_url)
+  print('\n')
+  print(params)
+
   r = requests.post(send_url, params=params)
   if r.status_code == 200:
     print('已通知 server 酱')
   else:
-    print('通知 Server 酱推送失败，详情 {}'.format(r.json()))
+    print('通知 Server 酱推送失败，详情：\n请求状态码：{}\n{}'.format(r.status_code, r.text))
