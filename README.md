@@ -6,7 +6,7 @@
 
 ## 功能
 
-- 每日凌晨 1 点 11 分定时签到（可自定义）
+- 每日凌晨 0 点定时开始执行签到（可自定义）
 - 支持监控告警，具体配置文档查看[Server 酱](https://sct.ftqq.com/)，消息通道支持以下渠道
   - 企业微信应用消息
   - Android，
@@ -26,7 +26,7 @@
     - HAO4K_PASSWORD
     - SERVERCHAN_SCKEY (监控告警 server 酱 sctkey)
   - 配置到仓库的 `setting/secrets`
-- 修改定时任务时间，在 [.github/workflows/hao4k.yml](https://github.com/cy920820/hao4k-signin-action/blob/main/.github/workflows/hao4k.yml) line 8, 修改 cron 计时表达式，参考 [schedule](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events)（可选）
+- 修改定时任务时间，在 [.github/workflows/hao4k.yml](https://github.com/cy920820/hao4k-signin-action/blob/main/.github/workflows/hao4k.yml) line 8, 修改 cron 计时表达式（UTC 时间），参考 [schedule](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events)
 
 ## 自动同步上游代码
 
